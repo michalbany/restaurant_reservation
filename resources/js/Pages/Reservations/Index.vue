@@ -4,7 +4,6 @@ import { Head, usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
 
 const { reservations } = usePage().props;
-// const reservations = [] // @remove
 
 // Seřadíme podle nejnovějších rezervací
 const sortedReservations = computed(() => {

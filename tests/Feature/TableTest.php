@@ -12,14 +12,14 @@ test('can create table with factory', function () {
 });
 
 test('can we load dashboard as a logged-in user', function () {
-    $user = User::factory()->create();  // Vytvoření testovacího uživatele
+    $user = User::factory()->create();
 
     $response = $this->actingAs($user)->get('/dashboard');
     $response->assertStatus(200);
 });
 
 test('tables can be listed for a logged-in user', function () {
-    $user = User::factory()->create();  // Vytvoření testovacího uživatele
+    $user = User::factory()->create();
     $tables = Table::factory()->count(3)->create();
 
     $response = $this->actingAs($user)->get('/dashboard');
