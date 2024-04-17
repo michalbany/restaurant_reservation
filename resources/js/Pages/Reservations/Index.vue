@@ -4,6 +4,7 @@ import { Head, usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
 
 const { reservations } = usePage().props;
+// const reservations = [] // @remove
 
 // Seřadíme podle nejnovějších rezervací
 const sortedReservations = computed(() => {
@@ -30,7 +31,7 @@ function getStatus(reservation) {
         </template>
 
             <div class="mt-6 overflow-hidden sm:rounded-lg">
-                <table class="table-auto table-full">
+                <table v-if="reservations && reservations.length"  class="table-auto table-full">
                     <thead>
                         <tr>
                             <th class="px-6 py-2 text-md font-medium text-gray-900">Číslo Stolu</th>
@@ -58,6 +59,10 @@ function getStatus(reservation) {
                         </tr>
                     </tbody>
                 </table>
+
+                <div v-else class="p-6 bg-white border border-gray-200 rounded-lg">
+                    <p class="text-gray-500 text-center">Nemáte žádné rezervace</p>
+                </div>
             </div>
         
     </AuthenticatedLayout>

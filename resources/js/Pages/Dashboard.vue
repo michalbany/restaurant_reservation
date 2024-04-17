@@ -77,8 +77,8 @@ const closeModal = () => {
                         >
                             <a
                                 @click="selectTable(table.id)"
-                                :class="tableClass(table.id)"
-                                class="h-20 flex items-center justify-center text-white font-bold rounded w-20 bg-gray-600"
+                                :class="[tableClass(table.id), `table-${table.capacity}`]"
+                                class="h-20 flex relative z-30 items-center justify-center text-white font-bold rounded w-20 bg-gray-600"
                                 v-for="table in tables"
                                 :key="table.id"
                             >
@@ -109,3 +109,67 @@ const closeModal = () => {
         </Modal>
     </AuthenticatedLayout>
 </template>
+
+<style scoped>
+
+.table-2::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #000 0%, #000 10%, transparent 10%, transparent 90%, #000 90%, #000 100%);
+    height: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.table-4::before {
+    content: "";
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    width: 130%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #000 0%, #000 10%, transparent 10%, transparent 90%, #000 90%, #000 100%);
+    height: 50%;
+    transform: translateX(-50%);
+}
+
+.table-4::after {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    width: 130%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #000 0%, #000 10%, transparent 10%, transparent 90%, #000 90%, #000 100%);
+    height: 50%;
+    transform: translateX(-50%);
+}
+
+.table-6::before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    width: 150%;
+    border-radius: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, #000 0%, #000 13%, transparent 13%, transparent 87%, #000 87%, #000 100%);
+    transform: translateX(-50%);
+}
+
+.table-6::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    border-radius: 20px;
+    background: linear-gradient(0deg, #000 0%, #000 10%, transparent 10%, transparent 90%, #000 90%, #000 100%);
+    height: 130%;
+    transform: translate(-50%, -50%);
+}
+
+</style>
